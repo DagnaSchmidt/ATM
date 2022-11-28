@@ -53,12 +53,61 @@ const variableName = 10;
 isNaN(variableName);
 
 // this is the function atm(), I've created some start code for you
-function atm() {
+function atm(x) {
   const message = parseFloat(prompt("Display message"));
   // you need to answer the question why we are using parseFloat() method here?
   // you can answer as a comment in your code, and yes you need to some research of your own
-
+  if(x === 1){
+    account.getBalance();
+  } else if(x === 2){
+    account.deposit();
+  } else if(x === 3){
+    account.withdrawal();
+  } else if(x === 4){
+    account.getAccountName();
+  } else if(x === 5){
+    account.exitAccount();
+  } else {
+    //error
+  }
   // to show the right output based on the user input you can
   // either use a if/else statement or a switch.
   // Write a comment and motivate your choice
 }
+
+const account = {
+  accountName: "Name of account: Helena Johansson ";
+  balance: 100000;
+  getBalance() {
+    return this.balance; //or console log?
+  }
+  deposit() {}
+  withdrawal() {}
+  getAccountName() {
+    return this.accountName;
+  }
+  accountError() {
+    return "something went wrong"; //check this!!
+  }
+  exitAccount() {}
+}
+
+
+//what I need
+// balance - number, can not be negative    balance >= 0;
+// getBalance : see balance (show balance) 
+
+// x - number when choosing an action (1 - see balance, 2- make deposit, 3- make withdrawal, 4- get account name, 5- exit)
+
+// deposit - amount, can not be negative or 0,    input >=1 (or minimum amount to deposit? like 10kr?) 
+  // action :  balance = balance + input
+
+// withdrawal - amount, can not be negative or 0,   input >=1 (or minimum amount to withdraw? like 10kr?)
+  // condition:   balance >= input 
+  //action:   balance = balance - input;  
+
+// getAccountName - show accountName (string)
+// accountError - show error (string)
+
+// exitAccount ???
+
