@@ -49,8 +49,8 @@
 // to the console. But you will use prompt instead of just regular console.
 
 // to handle one of the potential errors you can use this built in method isNaN(), this is how you use it:
-const variableName = 10;
-isNaN(variableName);
+//const variableName = 10;
+//isNaN(variableName);
 
 // this is the function atm(), I've created some start code for you
 function atm() {
@@ -94,14 +94,23 @@ const account = {
   },
   deposit() {
     let input = parseFloat(prompt(`Type amount to deposit. \n Minimum amount to deposit is 10kr`));
-    if(input <= 0){
+    isNumber = isNaN(input);
+    if(input <= 9 || isNumber == true){
       this.accountError();
     } else {
       this.balance = this.balance + input;
       atm();
     }
   },
-  withdrawal() {},
+  withdrawal() {
+    let input = parseFloat(prompt(`Type amount to withdraw. \n Minimum amount to withdraw is 10kr`));
+    if(input <= 9 || isNumber == true || input > balance){
+      this.accountError();
+    } else {
+      this.balance = this.balance - input;
+      atm();
+    }
+  },
   getAccountName() {
     let input = parseFloat(prompt(`Your account name: ${this.accountName} \n Select a choice: 1.) see balance 2.) make a deposit 3.) make a withdrawal 5.) exit`));
     if(input === 1){
@@ -132,7 +141,9 @@ const account = {
       this.accountError();
     }
   },
-  exitAccount() {},
+  exitAccount() {
+    return;
+  },
 }
 
 atm();
