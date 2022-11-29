@@ -68,7 +68,7 @@ function atm() {
   } else if(message === 5){
     account.exitAccount();
   } else {
-    //error
+    account.accountError();
   }
   // to show the right output based on the user input you can
   // either use a if/else statement or a switch.
@@ -104,10 +104,11 @@ const account = {
   },
   withdrawal() {
     let input = parseFloat(prompt(`Type amount to withdraw. \n Minimum amount to withdraw is 10kr`));
-    if(input <= 9 || isNumber == true || input > balance){
+    isNumber = isNaN(input);
+    if(input <= 9 || isNumber == true || input > this.balance){
       this.accountError();
     } else {
-      this.balance = this.balance - input;
+      this.balance = (this.balance - input);
       atm();
     }
   },
