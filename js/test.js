@@ -53,19 +53,19 @@ const variableName = 10;
 isNaN(variableName);
 
 // this is the function atm(), I've created some start code for you
-function atm(x) {
-  const message = parseFloat(prompt("Display message"));
+function atm() {
+  const message = parseFloat(prompt("Select a choice: 1.) see balance 2.) make a deposit 3.) make a withdrawal 4.) get account name 5.) exit "));
   // you need to answer the question why we are using parseFloat() method here?
   // you can answer as a comment in your code, and yes you need to some research of your own
-  if(x === 1){
+  if(message === 1){
     account.getBalance();
-  } else if(x === 2){
+  } else if(message === 2){
     account.deposit();
-  } else if(x === 3){
+  } else if(message === 3){
     account.withdrawal();
-  } else if(x === 4){
+  } else if(message === 4){
     account.getAccountName();
-  } else if(x === 5){
+  } else if(message === 5){
     account.exitAccount();
   } else {
     //error
@@ -76,21 +76,66 @@ function atm(x) {
 }
 
 const account = {
-  accountName: "Name of account: Helena Johansson ";
-  balance: 100000;
+  accountName: "Helena Johansson",
+  balance: 100000,
   getBalance() {
-    return this.balance; //or console log?
-  }
-  deposit() {}
-  withdrawal() {}
+    let input = parseFloat(prompt(`Your balance: ${this.balance} \n Select a choice: 2.) make a deposit 3.) make a withdrawal 4.) get account name 5.) exit`));
+    if(input === 2){
+      this.deposit();
+    } else if(input === 3){
+      this.withdrawal();
+    } else if(input === 4){
+      this.getAccountName();
+    } else if(input === 5){
+      this.exitAccount();
+    } else {
+      this.accountError();
+    }
+  },
+  deposit() {
+    let input = parseFloat(prompt(`Type amount to deposit. \n Minimum amount to deposit is 10kr`));
+    if(input <= 0){
+      this.accountError();
+    } else {
+      this.balance = this.balance + input;
+      atm();
+    }
+  },
+  withdrawal() {},
   getAccountName() {
-    return this.accountName;
-  }
+    let input = parseFloat(prompt(`Your account name: ${this.accountName} \n Select a choice: 1.) see balance 2.) make a deposit 3.) make a withdrawal 5.) exit`));
+    if(input === 1){
+      this.getBalance();
+    } else if(input === 2){
+      this.deposit();
+    } else if(input === 3){
+      this.withdrawal();
+    } else if(input === 5){
+      this.exitAccount();
+    } else {
+      this.accountError();
+    }
+  },
   accountError() {
-    return "something went wrong"; //check this!!
-  }
-  exitAccount() {}
+    let input = parseFloat(prompt("Something went wrong! Choose 1, 2, 3, 4 or 5. \n Select a choice: 1.) see balance 2.) make a deposit 3.) make a withdrawal 4.) get account name 5.) exit"));
+    if(input === 1){
+      this.getBalance();
+    } else if(input === 2){
+      this.deposit();
+    } else if(input === 3){
+      this.withdrawal();
+    } else if(input === 4){
+      this.withdrawal();
+    } else if(input === 5){
+      this.exitAccount();
+    } else {
+      this.accountError();
+    }
+  },
+  exitAccount() {},
 }
+
+atm();
 
 
 //what I need
@@ -99,10 +144,10 @@ const account = {
 
 // x - number when choosing an action (1 - see balance, 2- make deposit, 3- make withdrawal, 4- get account name, 5- exit)
 
-// deposit - amount, can not be negative or 0,    input >=1 (or minimum amount to deposit? like 10kr?) 
+// deposit - amount, can not be negative or 0,    input >=1 (or minimum amount to deposit? like 10kr?), input has to be number!
   // action :  balance = balance + input
 
-// withdrawal - amount, can not be negative or 0,   input >=1 (or minimum amount to withdraw? like 10kr?)
+// withdrawal - amount, can not be negative or 0,   input >=1 (or minimum amount to withdraw? like 10kr?), input has to be number!
   // condition:   balance >= input 
   //action:   balance = balance - input;  
 
