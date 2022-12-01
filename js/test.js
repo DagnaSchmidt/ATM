@@ -54,43 +54,37 @@
 
 // this is the function atm(), I've created some start code for you
 function atm() {
-  const message = parseFloat(prompt("Select a choice: 1.) see balance 2.) make a deposit 3.) make a withdrawal 4.) get account name 5.) exit "));
+  let input = parseFloat(prompt("Select a choice: 1.) see balance 2.) make a deposit 3.) make a withdrawal 4.) get account name 5.) exit "));
   // you need to answer the question why we are using parseFloat() method here?
   // you can answer as a comment in your code, and yes you need to some research of your own
-  if(message === 1){
-    account.getBalance();
-  } else if(message === 2){
-    account.deposit();
-  } else if(message === 3){
-    account.withdrawal();
-  } else if(message === 4){
-    account.getAccountName();
-  } else if(message === 5){
-    account.exitAccount();
-  } else {
-    account.accountError();
-  }
+  /*it is used to convert string to number, for example if user types 3g, it converts it to 3*/
+    if(input === 1){
+      account.getBalance();
+    } else if(input === 2){
+      account.deposit();
+    } else if(input === 3){
+      account.withdrawal();
+    } else if(input === 4){
+      account.getAccountName();
+    } else if(input === 5){
+      account.exitAccount();
+    }  else {
+      account.accountError();
+    }
+
   // to show the right output based on the user input you can
   // either use a if/else statement or a switch.
   // Write a comment and motivate your choice
+
+  /* I thought that in this assignment if/else statement is less complicated to use*/
 }
 
 const account = {
   accountName: "Helena Johansson",
   balance: 100000,
   getBalance() {
-    let input = parseFloat(prompt(`Your balance: ${this.balance} \n Select a choice: 2.) make a deposit 3.) make a withdrawal 4.) get account name 5.) exit`));
-    if(input === 2){
-      this.deposit();
-    } else if(input === 3){
-      this.withdrawal();
-    } else if(input === 4){
-      this.getAccountName();
-    } else if(input === 5){
-      this.exitAccount();
-    } else {
-      this.accountError();
-    }
+    let input = parseFloat(prompt(`Your balance: ${this.balance} \n  Type anything to go back to main menu`));
+    atm();
   },
   deposit() {
     let input = parseFloat(prompt(`Type amount to deposit. \n Minimum amount to deposit is 10kr`));
@@ -113,34 +107,12 @@ const account = {
     }
   },
   getAccountName() {
-    let input = parseFloat(prompt(`Your account name: ${this.accountName} \n Select a choice: 1.) see balance 2.) make a deposit 3.) make a withdrawal 5.) exit`));
-    if(input === 1){
-      this.getBalance();
-    } else if(input === 2){
-      this.deposit();
-    } else if(input === 3){
-      this.withdrawal();
-    } else if(input === 5){
-      this.exitAccount();
-    } else {
-      this.accountError();
-    }
+    let input = parseFloat(prompt(`Your account name: ${this.accountName} \n Type anything to go back to main menu`));
+      atm();
   },
   accountError() {
-    let input = parseFloat(prompt("Something went wrong! Choose 1, 2, 3, 4 or 5. \n Select a choice: 1.) see balance 2.) make a deposit 3.) make a withdrawal 4.) get account name 5.) exit"));
-    if(input === 1){
-      this.getBalance();
-    } else if(input === 2){
-      this.deposit();
-    } else if(input === 3){
-      this.withdrawal();
-    } else if(input === 4){
-      this.withdrawal();
-    } else if(input === 5){
-      this.exitAccount();
-    } else {
-      this.accountError();
-    }
+    let input = parseFloat(prompt("Something went wrong! \n Type anything to go back to main menu"));
+    atm();
   },
   exitAccount() {
     return;
@@ -148,6 +120,8 @@ const account = {
 }
 
 atm();
+
+
 
 
 //what I need
